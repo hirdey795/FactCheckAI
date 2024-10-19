@@ -1,12 +1,7 @@
-// adding a new bookmark row to the popup
-const addNewBookmark = () => {};
+// Duration of the loading screen in milliseconds
+const loadingDuration = 1500; // 3 seconds
 
-const viewBookmarks = () => {};
-
-const onPlay = e => {};
-
-const onDelete = e => {};
-
-const setBookmarkAttributes =  () => {};
-
-document.addEventListener("DOMContentLoaded", () => {});
+setTimeout(() => {
+    // Redirect to your main AI content (change 'yourAIContent.html' to your actual file)
+    window.location.href = 'main.html'; 
+}, loadingDuration);
