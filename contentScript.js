@@ -4,9 +4,29 @@
     
 */
 
-
-
-
+// Function to extract the main content of an article
+function extractArticleContent() {
+    const paragraphs = document.querySelectorAll('p');
+    let articleText = '';
+    paragraphs.forEach(p => {
+      articleText += p.innerText + ' ';
+    });
+    return articleText.trim();
+  }
+  
+  // Send the extracted content to the background script for fact-checking
+  const articleContent = extractArticleContent();
+  
+  if (articleContent) {
+    chrome.runtime.sendMessage({ 
+      action: 'factCheck', 
+      data: articleContent 
+    }, (response) => {
+      console.log('Fact-check response:', response);
+    });
+  }
+  
+  
 
 /*
 (() => {
