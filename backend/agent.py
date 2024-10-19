@@ -1,75 +1,54 @@
-from flask import Flask, request, jsonify
 import requests
-from uagents import Agent
+from flask import Flask, request, jsonify
 
+# Initialize the Fetch agent
 app = Flask(__name__)
-agent = Agent(name="fact-checker")
 
-# Google Fact Check Tools API Key (you will need your own API key here)
-API_KEY = "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"
+# Your Perplexity API key (replace this with your actual key)
+PERPLEXITY_API_KEY = "INSERT REAL PEPLEXITY API KEY!!!"
 
-# Function to query Google Fact Check Tools API
-def google_fact_check(query):
-    print(f"Querying Fact Check API with query: {query}")
-    endpoint = f"https://factchecktools.googleapis.com/v1alpha1/claims:search?key={API_KEY}"
-    params = {"query": query, "languageCode": "en"}
-
-    response = requests.get(endpoint, params=params)
-    print(f"API Response Code: {response.status_code}")
-
-    if response.status_code == 200:
-        data = response.json()
-        print("Response from API:", data)
-
-        if 'claims' in data and len(data['claims']) > 0:
-            # Process the fact-checking claims returned by the API
-            return data['claims']
-        else:
-            return {"message": "No claims found for this query."}
-    else:
-        return {"error": f"Error fetching fact-check: {response.status_code}"}
-
-# Handle fact-check event
-@agent.on_event("fact_check")
-async def handle_fact_check(ctx, data):
-    article_content = data.get('article_content')
-
-    print(f"Fact-checking article with content: {article_content[:100]}...")  # For debugging
-
-    # Fact-check using the full article content (you can query APIs or run custom logic here)
-    fact_check_result = google_fact_check(article_content)
-
-    return {
-        "fact_check_result": fact_check_result,
-        "status": "Fact-checked"
+# Function to send a fact-check request to Perplexity
+def fact_check_with_perplexity(article_text, news_agency):
+    headers = {
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
+        "Content-Type": "application/json"
     }
 
-# Flask endpoint to handle requests from the browser extension
+    # API endpoint for Perplexity (REPLACE with the actual endpoint)
+    url = "https://api.perplexity.ai/v1/fact_check"
+
+    # The body of the request contains the article text and the news agency to exclude
+    payload = {
+        "query": article_text,
+        "exclude_sources": [news_agency]  # Specify the news agency to exclude from references
+    }
+
+    # Send a POST request to Perplexity's fact-checking API
+    response = requests.post(url, json=payload, headers=headers)
+
+    # Process the response
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return {"error": f"Failed with status code {response.status_code}"}
+
+# Define the event handler for fact-checking
 @app.route("/fact_check", methods=["POST"])
 def fact_check():
-    # Check if a file is included in the request
-    if 'file' not in request.files:
-        return jsonify({"error": "No file part"}), 400
+    # Extract the article content and news agency (sent by the browser extension)
+    data = request.json
+    article_content = data.get('article_content')
+    news_agency = data.get('news_agency')
 
-    file = request.files['file']
+    # Log the article content and news agency for debugging
+    print(f"Received article content: {article_content[:100]}...")
+    print(f"Received news agency: {news_agency}")
 
-    # Ensure a file was submitted
-    if file.filename == '':
-        return jsonify({"error": "No selected file"}), 400
+    # Fact-check the article using Perplexity, excluding the specified news agency
+    fact_check_result = fact_check_with_perplexity(article_content, news_agency)
 
-    # Read the contents of the file
-    article_content = file.read().decode('utf-8')
-
-    print(f"Received article content: {article_content[:100]}...")  # Print the first 100 characters for debugging
-
-    # Process the article content with the agent (fact-checking)
-    result = agent.on_event('fact_check', {"article_content": article_content})
-
-    return jsonify(result)
+    # Return the result as JSON
+    return jsonify(fact_check_result)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
-"""    
-if __name__ == "__main__":
-    app.run(port=5000)
-"""
