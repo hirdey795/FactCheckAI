@@ -9,7 +9,6 @@ body {
 }
 
 
-
 .logo{
   display: flex;
   justify-content: center;
@@ -30,7 +29,9 @@ h1 {
   color: #D672E2; /* Text color */
   text-shadow: 2px 2px 5px rgb(214, 114, 226); /* X-offset, Y-offset, Blur-radius, Color */
   font-weight: 100;
-  margin-bottom: 0px;
+  font-family: 'VT323', monospace;
+  margin: 0;
+  display: inline;
 }
 
 h3 {
@@ -43,16 +44,25 @@ h3 {
 /* loading animation */
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 15px; /* Adjust size */
-  height: 15px;
+
+  background-color: #fff;
+  width: 40px;    /* Increased size */
+  height: 40px;   /* Increased size */
   margin: 0px;
-  border: 16px solid rgba(243, 243, 243, 0.7); 
-  border-top: 16px solid #D672E2; /* Loading color */
+  border: 4px solid rgba(243, 243, 243, 0.7);  /* Reduced border size */
+  border-top: 4px solid #D672E2;  /* Visible color */
   border-radius: 50%;
-  animation: spin 2s linear infinite; /* Animation */
+  animation: spin 2s linear infinite;
+}
+
+.wrap {
+  display: flex;                  /* Enable Flexbox */
+  justify-content: center;        /* Horizontally center the loading circle */
+  align-items: center;            /* Vertically center the loading circle */
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
