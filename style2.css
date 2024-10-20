@@ -31,6 +31,32 @@ h1 {
     text-align: center;          /* Ensure text is centered */
 }
 
+.textbox {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto; /* This centers the box horizontally */
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    color: #4a4a4a;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.textbox h3 {
+    color: #D672E2; /* Match the FactAI purple color */
+    text-align: center;
+}
+
+.textbox ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.textbox p {
+    font-weight: bold;
+    color: #4a4a4a;
+}
 
 
 
