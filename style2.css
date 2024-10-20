@@ -8,17 +8,34 @@ body {
     background-color: #f0f0f0;
   }
   
-.logo {
-    display: flex; 
-    align-items: center; 
-    background-color: white; 
-    border-radius: 19px; /* Rounded corners */
-    margin-right: 70%;
-    font-size: 10px;
-    letter-spacing: 3px;
-    padding: 8px 20px; /* Space inside the rectangle */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+h1 {
+  letter-spacing: 4px;
+  color: #D672E2; /* Text color */
+  text-shadow: 2px 2px 5px rgb(214, 114, 226); /* X-offset, Y-offset, Blur-radius, Color */
+  font-weight: 100;
+  font-family: 'VT323', monospace;
+  margin: 0;
+  display: inline;
 }
+
+
+  .logo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;      /* Align items in a column (image on top, text below) */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;     /* Center vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;          /* Ensure text is centered */
+}
+
+.subtitle{
+    
+}
+
 #img1 {
-    border: 1px solid red; /* Temporary border for debugging */
+    width: 50px;
+    height: auto;
 }
