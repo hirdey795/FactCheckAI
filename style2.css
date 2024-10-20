@@ -1,0 +1,54 @@
+body {
+    background: linear-gradient(180deg, #D9C7F5, #EEE1E4);
+    background-color: rgb(255, 248, 255);
+    min-width: 340px;
+    min-height: 600px;
+    color: #D672E2;
+    font-family: 'Inter';
+    background-color: #f0f0f0;
+  }
+  
+h1 {
+  letter-spacing: 4px;
+  color: #D672E2; /* Text color */
+  text-shadow: 2px 2px 5px rgb(214, 114, 226); /* X-offset, Y-offset, Blur-radius, Color */
+  font-weight: 100;
+  font-family: 'VT323', monospace;
+  margin: 0;
+  display: inline;
+}
+
+
+  .logo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;      /* Align items in a column (image on top, text below) */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;     /* Center vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;          /* Ensure text is centered */
+}
+
+
+
+
+.footer {
+    width: calc(100% - 20px);
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff; /* Ensure it's clearly visible */
+    text-align: center;
+    font-size: 5.5px; /* Adjust font size */
+    color: #D672E2;
+    padding: 5px; /* Adds a little padding */
+    box-sizing: border-box;
+    margin: 5 0px;  /* Add equal margin on both left and right */
+}
+
+
+#img1 {
+    width: 50px;
+    height: auto;
+}

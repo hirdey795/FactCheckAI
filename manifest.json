@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "manifest_version": 3,
     "name": "YouTube Fact Checker",
@@ -21,3 +22,45 @@
     ]
   }
   
+=======
+
+
+{
+  "manifest_version": 3,
+  "name": "FactAi - Fact Checker",
+  "description": "Fact-check articles and videos to verify the accuracy of information.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "reFacts.html",
+    "default_icon": {
+      "16": "logo.svg",
+      "48": "logo.svg",
+      "128": "logo.svg"
+    }
+  },
+  "icons": {
+    "16": "logo.svg",
+    "48": "logo.svg",
+    "128": "logo.svg"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ]
+}
+>>>>>>> 652595bab8ed1d2ed79d0304a5c76ae4acbe0513
