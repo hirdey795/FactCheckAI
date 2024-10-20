@@ -1,0 +1,24 @@
+body {
+    background: linear-gradient(180deg, #D9C7F5, #EEE1E4);
+    background-color: rgb(255, 248, 255);
+    min-width: 340px;
+    min-height: 600px;
+    color: #D672E2;
+    font-family: 'Inter';
+    background-color: #f0f0f0;
+  }
+  
+.logo {
+    display: flex; 
+    align-items: center; 
+    background-color: white; 
+    border-radius: 19px; /* Rounded corners */
+    margin-right: 70%;
+    font-size: 10px;
+    letter-spacing: 3px;
+    padding: 8px 20px; /* Space inside the rectangle */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+#img1 {
+    border: 1px solid red; /* Temporary border for debugging */
+}
