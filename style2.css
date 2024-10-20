@@ -31,6 +31,23 @@ h1 {
     text-align: center;          /* Ensure text is centered */
 }
 
+
+
+
+.footer {
+    width: calc(100% - 20px);
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff; /* Ensure it's clearly visible */
+    text-align: center;
+    font-size: 5.5px; /* Adjust font size */
+    color: #D672E2;
+    padding: 5px; /* Adds a little padding */
+    box-sizing: border-box;
+    margin: 5 0px;  /* Add equal margin on both left and right */
+}
+
+
 #img1 {
     width: 50px;
     height: auto;
