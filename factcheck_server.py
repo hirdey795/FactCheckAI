@@ -35,16 +35,10 @@ def scrape():
     try:
         # Scrape the article
         article_data = scrape_article(url)
-        query = client.chat.completions.create(model="gpt-4.o-mini", messages=[
-            {"role": "user", "content": "I'm pasting a n. Text:" + article_data["text"]}
+        query = client.chat.completions.create(model="llama-3.1-sonar-large-128k-online", messages=[
+            {"role": "user", "content": "I'm pasting a news article, list all the misleading datapoints or baises you find and output in a list with each point not more than 20 words and also give me a very short summary of the article at the end. Convert everything to html Text:" + article_data["text"]}
             ])
-        print(query.choices[0].message.content)
-        # Save the scraped article to a JSON file
-        filename = "article.json"
-        with open(filename, 'w') as f:
-            json.dump(article_data, f)
-
-        return jsonify({'status': 'success', 'file': filename}), 200
+        return jsonify({'status': 'success', 'data': query.choices[0].message.content}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
