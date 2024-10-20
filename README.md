@@ -5,57 +5,10 @@ Fact Checker AI is a tool designed to verify the accuracy of written statements 
 
 This version focuses solely on article fact-checking due to time constraints, with plans for future expansion to video-based fact-checking.
 
-Features
-Article Fact-Checking: Analyze the factual accuracy of articles from online sources.
-Browser Extension Integration: A browser extension that summarizes visited articles and indicates how factual they are.
-Installation
-To set up the Fact Checker AI on your local machine, follow these steps:
+Our project addresses a critical need in today's information landscape: helping people make more informed decisions, particularly during high-stakes events like presidential elections. In an age where political discourse is often flooded with misinformation, our solution empowers voters to access accurate, unbiased information in real-time. By providing instant fact-checking during debates and political speeches, we aim to reduce the influence of misleading or false statements, allowing the electorate to focus on the actual issues at hand.
 
-Clone the repository:
+Our system integrates natural language processing (NLP) with advanced AI-driven fact-checking algorithms. It begins by analyzing live or pre-recorded YouTube videos of debates or speeches. Using the YouTube API, our application extracts video transcriptions and processes them through spaCy, a robust NLP library, to identify key claims and statements. These are then cross-referenced with fact-checking databases through our AI agent to determine their accuracy. The result is an easily accessible, real-time report on whether a statement is factually true, incorrect, or an opinion.
 
-bash
-Copy code
-git clone https://github.com/your-username/fact-checker-ai.git
-cd fact-checker-ai
-Create and activate a virtual environment (recommended):
+From a technical perspective, our project employs a variety of cutting-edge tools. We use Python as the core programming language, integrating with the YouTube API for transcription extraction and spaCy for linguistic processing. This combination allows our system to accurately extract and evaluate sentences from complex speech patterns. On the front end, we developed a browser extension using JavaScript and background.js to automatically provide fact-checking feedback as users browse YouTube videos or articles. This seamless integration enables users to view content without needing to manually input links.
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
-
-bash
-Copy code
-pip install -r requirements.txt
-Run the application:
-
-bash
-Copy code
-python main.py
-Usage
-Fact-Checking Articles
-To fact-check an article, you can input the article URL or text:
-
-bash
-Copy code
-python main.py --url "https://example.com/article"
-or
-
-bash
-Copy code
-python main.py --file input_article.txt
-The AI will analyze the text, summarize key claims, and provide an evaluation of their accuracy.
-
-Future Development
-YouTube Video Fact-Checking: Add video transcription and fact-checking capabilities.
-Real-time Speech Analysis: Analyze and fact-check live events.
-Expanded Content Sources: Broaden beyond articles to include other text and media sources.
-Contributing
-We welcome contributions! If you're interested in improving this project, please follow the guidelines below:
-
-Fork the repository.
-Create a feature branch (git checkout -b feature-name).
-Commit your changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature-name).
-Open a pull request.
+Additionally, by leveraging pre-trained models and sophisticated algorithms, our system achieves real-time fact-checking without the need for extensive re-training, making it both scalable and efficient. This project highlights the power of NLP, AI, and real-world data integration, resulting in a technically complex yet user-friendly solution for promoting informed voting in presidential elections.
