@@ -5,28 +5,37 @@
 */
 
 // Function to extract the main content of an article
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status === 'complete' && initialUrl && tab.url === initialUrl) {
+        chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['contentScript.js']  // This injects contentScript.js
+        });
+    }
+});
+
 function extractArticleContent() {
     const paragraphs = document.querySelectorAll('p');
     let articleText = '';
     paragraphs.forEach(p => {
-      articleText += p.innerText + ' ';
+        articleText += p.innerText + ' ';
     });
     return articleText.trim();
-  }
-  
-  // Send the extracted content to the background script for fact-checking
-  const articleContent = extractArticleContent();
-  
-  if (articleContent) {
-    chrome.runtime.sendMessage({ 
-      action: 'factCheck', 
-      data: articleContent 
+}
+
+// Send the extracted content to the background script for fact-checking
+const articleContent = extractArticleContent();
+
+if (articleContent) {
+    chrome.runtime.sendMessage({
+        action: 'factCheck',
+        data: articleContent
     }, (response) => {
-      console.log('Fact-check response:', response);
+        console.log('Fact-check response:', response);
     });
-  }
-  
-  
+}
+
+
 
 /*
 (() => {

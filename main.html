@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +8,99 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <title>FactAi</title>
-  <link rel="stylesheet" href="style2.css" type="text/css" >
+  <link rel="stylesheet" href="style2.css" type="text/css">
+
+  <style>
+    /* Ensure the body takes the full height of the viewport */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+      /* Light background */
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Centered white box */
+    .center-box {
+      background-color: #fff;
+      /* White background */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Light shadow for depth */
+      max-width: 80%;
+      /* Limits the size of the box */
+      width: 600px;
+      /* Fixed width for the box */
+      min-height: 300px;
+      /* Minimum height to ensure space */
+      text-align: center;
+      overflow: auto;
+      /* Scroll if the content is too large */
+    }
+
+    /* Styling for any returned HTML content */
+    #results {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    /* Styling for the logo and subtitle as per your current design */
+    .logo h1 {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .subtitle h3 {
+      font-family: 'VT323', monospace;
+    }
+
+    /* Footer style */
+    .footer h4 {
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
-  <div class ="lightMode">
-    <img src="lightMode.svg">
+  <div class="lightMode">
+    <img src="lightMode.svg" alt="Light Mode">
   </div>
+
   <div class="logo">
     <img id="img1" src="logo3.svg" alt="Logo" width="8%" height="auto">
-    <h1>factAI</h1> <!--Title, can change-->
+    <h1>factAI</h1>
   </div>
+
   <div class="subtitle">
-    <h3> verify facts from articles</h3>
-  </div>
-  <div class="wrap">
-  </div>
-  <div class="loader"></div> 
-  <div class = "footer">
-    <h4> FactAI results are based on publicly available information and are for reference only. Users should verify facts from multiple sources before making any decisions. FactAI is not liable for inaccuracies or errors in the fact-checking process.</h4>
+    <h3>verify facts from articles</h3>
   </div>
 
+  <!-- Centered white box where the returned HTML will be displayed -->
+  <div class="center-box">
+    <h2>FactAI Results</h2>
+    <div id="results">
+      <!-- The returned HTML content will be injected here -->
+    </div>
+  </div>
 
-  <script type="module" src="reFacts.js"></script>
+  <div class="footer">
+    <h4>FactAI results are based on publicly available information and are for reference only. Users should verify facts
+      from multiple sources before making any decisions. FactAI is not liable for inaccuracies or errors in the
+      fact-checking process.</h4>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="main.js"></script>
 </body>
+
 </html>
